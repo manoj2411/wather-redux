@@ -12,9 +12,14 @@ class Sidebar extends React.Component {
     this.setState({term: event.target.value});
   }
 
+  formSubmit(event) {
+    event.preventDefault();
+    // Here we can fetch weather data;
+  }
+
   render() {
     return (
-      <form className="input-group">
+      <form onSubmit={this.formSubmit} className="input-group">
         <input
           placeholder="Get a 5 day forecast in your favorite cities. "
           className="form-control"
