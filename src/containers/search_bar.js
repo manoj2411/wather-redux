@@ -1,11 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchWeather} from '../actions';
 
-class Sidebar extends React.Component {
+
+class SearchBar extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {term: ''};
     this.onInputChange = this.onInputChange.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
   }
 
   onInputChange(event) {
@@ -15,6 +20,8 @@ class Sidebar extends React.Component {
   formSubmit(event) {
     event.preventDefault();
     // Here we can fetch weather data;
+    this.props.fetchWeather(this.state.term);
+    this.setState({term: ''});
   }
 
   render() {
@@ -34,4 +41,12 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchWeather}, dispatch);
+};
+
+function mapStateToProps(state) {
+  return
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

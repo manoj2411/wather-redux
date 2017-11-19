@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Sidebar from '../containers/sidebar';
+import SearchBar from '../containers/search_bar';
 
 export default class App extends Component {
   render() {
     return (
-      <Sidebar />
+      <SearchBar />
     );
   }
 }
